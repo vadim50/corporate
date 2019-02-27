@@ -138,7 +138,8 @@
                 <!-- END HEADER -->
                 
                 <!-- START SLIDER -->
-				<div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
+                @yield('sliders')
+			<!--	<div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
 				    <ul class="slider">
 				        <li>
 				            <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/slider-cycle/xx.jpg') no-repeat center center" style="height:483px;">
@@ -254,7 +255,8 @@
 				    <div class="slider fixed-image inner">
                         <img src="{{ asset(env('THEME')) }}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
 				</div>
-				
+            -->
+				<!-- FINISH SLIDER -->
 				<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-right">
 				    <div class="inner group">

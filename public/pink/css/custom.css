@@ -20,3 +20,6 @@ It will always override rules in style.css.
 Good work... and good luck! :)
 
 ********************************************/
+#header .menu > ul > .active a{
+	color: #b77a2b;
+}

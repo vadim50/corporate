@@ -1,10 +1,13 @@
 <?php
 
 namespace Corp\Http\Controllers;
+//use Corp\Http\Middleware\GenerateMenus;
+use \Menu;
 
 use Illuminate\Http\Request;
 use Corp\Http\Requests;
 use Corp\Repositories\MenusRepository;
+
 
 class SiteController extends Controller
 {
@@ -30,8 +33,8 @@ class SiteController extends Controller
     protected function renderOutput(){
 
     	$menu = $this->getMenu();
-    	dd($menu);
-    	$navigation = view(env('THEME').'.navigation')->render();
+    	//dd($menu);
+    	$navigation = view(env('THEME').'.navigation')->with('menu',$menu)->render();
     	$this->vars = array_add($this->vars,'navigation',$navigation);
 
     	return view($this->template)->with($this->vars);
@@ -40,7 +43,23 @@ class SiteController extends Controller
     public function getMenu(){
     	$menu = $this->m_rep->get();
 
-    	return $menu;
+    	$mBuilder = \Menu::make('MyNav', function($m) use ($menu){
+
+    		 foreach($menu as $item){
+
+    			if($item->parent == 0){
+    				$m->add($item->title, $item->path)->id($item->id);
+    			} else {
+    		 		if($m->find($item->parent)){
+    					$m->find($item->parent)->add($item->title, $item->path)->id($item->id);
+    				}
+    		 	}
+
+    		 }
+    	});
+    	//dd($mBuilder);
+
+    	return $mBuilder;
     }
 
 }
