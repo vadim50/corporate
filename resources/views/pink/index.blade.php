@@ -7,3 +7,7 @@
 @section('sliders')
 	{!! $sliders !!}
 @endsection
+
+@section('content')
+	{!! $content !!}
+@endsection

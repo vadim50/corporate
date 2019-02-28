@@ -11,7 +11,7 @@
     		url('{{ asset(env('THEME')) }}/images/{{ $slide->img }}')
     		no-repeat center center" style="height:483px;">
     			 <div class="slide-content-holder inner" style="height:483px;">
-				@if($slide->id%2 == 0)
+				@if($slide->id%2 != 0)
 				 <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
 				@else
 				<div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">
