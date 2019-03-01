@@ -26,8 +26,11 @@
     			 </div>
     		</div>
     	</li>
+ 
+    
 		
     	@endforeach
+        <!--
         <li>
             <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/slider-cycle/xx.jpg') no-repeat center center" style="height:483px;">
                 <div class="slide-content-holder inner" style="height:483px;">
@@ -62,8 +65,9 @@
                 </div>
             </div>
         </li>
+    -->
     </ul>
-    
+  
     <div id="yit-widget-area" class="group">
         <div class="yit-widget-content inner group">
             <div class="widget-first yit-widget widget col1_4 one-fourth col widget-icon-text group">

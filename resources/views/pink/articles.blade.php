@@ -4,10 +4,6 @@
 	{!! $navigation !!}
 @endsection
 
-@section('sliders')
-	{!! $sliders !!}
-@endsection
-
 @section('content')
 	{!! $content !!}
 @endsection
