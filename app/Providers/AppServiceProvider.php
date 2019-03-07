@@ -4,6 +4,8 @@ namespace Corp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use DB;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        DB::listen(function($query){
+            //echo '<h1>' . $query->sql . '</h1>';
+        });
         
     }
 
