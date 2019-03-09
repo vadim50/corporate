@@ -126,14 +126,14 @@
 				                        	<label for="url">
 				                        	Website
 				                        	</label>
-				                        	<input id="url" name="url" type="text" value="" size="30" />
+				                        	<input id="url" name="site" type="text" value="" size="30" />
 				                        </p>
 				                        @endif
 				                        <p class="comment-form-comment">
 				                        	<label for="comment">
 				                        	Your comment
 				                        	</label>
-				                        	<textarea id="comment" name="comment" cols="45" rows="8"></textarea>
+				                        	<textarea id="comment" name="text" cols="45" rows="8"></textarea>
 				                        </p>
 				                        <div class="clear"></div>
 				                        <p class="form-submit">
@@ -146,7 +146,7 @@
 				                        	<input id="comment_parent"
 				                        	type="hidden" 
 				                        	name="comment_parent"
-				                        	value="">
+				                        	value="0">
 
 				                            <input name="submit" type="submit" id="submit" value="Post Comment" />
 				                        </p>

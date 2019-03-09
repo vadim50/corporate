@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Corp\Http\Requests;
 use Validator;
 use Auth;
+use Corp\Comment;
+use Corp\Article;
 
 class CommentController extends SiteController
 {
@@ -58,11 +60,19 @@ class CommentController extends SiteController
          });
         if($validator->fails()){return \Response::json(['error'=>$validator->errors()->all()]);}
 
-        //if($validator->fails()){
-            //return \Response::json(['error'=>$validator->errors()->all()]);
-            //return 'ok';
-        //}
 
+        $user = Auth::user();
+        $comment = new Comment($data);
+
+        if($user){
+            $comment->user_id = $user->id;
+        }else{
+            $comment->user_id = 0;
+        }
+
+        $post = Article::find($data['article_id']);
+
+        $post->comments()->save($comment);
          
         echo json_encode(['hello' => 'World']);
 
