@@ -50,6 +50,7 @@
 
 		</ul>
     @endif
+
 </li>
 
 @endforeach

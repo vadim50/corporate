@@ -53,7 +53,7 @@ class CommentController extends SiteController
             'text' => 'required|string'
         ]);
 
-        
+       
         
          $validator->sometimes(['name','email'],'required|max:255',function($input){
              return !Auth::check();
@@ -66,15 +66,24 @@ class CommentController extends SiteController
 
         if($user){
             $comment->user_id = $user->id;
-        }else{
-            $comment->user_id = 0;
-        }
-
+           
+         } 
         $post = Article::find($data['article_id']);
 
         $post->comments()->save($comment);
-         
-        echo json_encode(['hello' => 'World']);
+
+        $comment->load('user');
+
+        $data['id'] = $comment->id;
+        $data['email'] = (!empty($data['email'])) ? $data['email'] : $comment->user->email;
+        $data['name'] = (!empty($data['name'])) ? $data['name'] : $comment->user->name;
+
+        $data['hash'] = md5($data['email']);
+
+        $view_comment = view(env('THEME').'.content_one_comment')->with('data', $data)->render();
+
+        return \Response::json(['success' => TRUE, 'comment' => $view_comment, 'data' => $data]);
+       
 
         exit();
     }

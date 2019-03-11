@@ -30,6 +30,10 @@ class ArticlesController extends SiteController
     public function index($cat_alias = false){
         //
 
+        $this->title = 'Блог';
+        $this->keywords = 'String';
+        $this->meta_desc = 'String';
+
        $articles = $this->getArticles($cat_alias);
 
        $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
@@ -77,7 +81,8 @@ class ArticlesController extends SiteController
         }
 
     	$articles = $this->a_rep
-        ->get(['id','title','alias','created_at','img','desc', 'user_id' ,'category_id'], false, true, $where);
+        ->get(['id','title','alias','created_at',
+               'img','desc', 'user_id' ,'category_id', 'keywords', 'meta_desc'], false, true, $where);
 
     	if($articles){
     		$articles->load('user', 'category', 'comments');
@@ -94,6 +99,10 @@ class ArticlesController extends SiteController
             $article->img = json_decode($article->img);
         }
         //dd($article->comments->groupBy('parent_id'));
+
+        $this->title = $article->title;
+        $this->keywords = $article->keywords;
+        $this->meta_desc = $article->meta_desc;
 
         $content = view(env('THEME').'.article_content')->with('article', $article)->render();
         $this->vars = array_add($this->vars, 'content', $content);
