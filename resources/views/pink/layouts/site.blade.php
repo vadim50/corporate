@@ -104,7 +104,7 @@
     <!-- END HEAD -->
     
     <!-- START BODY -->
-    <body class="no_js responsive {{ Route::currentRouteName() == 'home' ? 'page-template-home-php' : ''}} stretched">
+    <body class="no_js responsive {{ (Route::currentRouteName() == 'portfolios.show' || Route::currentRouteName() == 'home' || Route::currentRouteName() == 'portfolios.index') ? 'page-template-home-php' : ''}} stretched">
     
         
         <!-- START BG SHADOW -->
@@ -152,6 +152,30 @@
                     
                 </div>
 				<!-- FINISH SLIDER -->
+                <!-- START PAGE META -->
+                @if(Route::currentRouteName() == 'portfolios.index')
+                <div id="page-meta">
+                    <div class="inner group">
+                        <h3>Welcome to my portfolio page</h3>
+                        <h4>... i hope you enjoy my works</h4>
+                    </div>
+                </div>
+                @endif
+                @if(Route::currentRouteName() == 'contacts')
+                 @if(session('status'))
+                  
+                    <div class="box success-box">{{ session('status')}}</div>
+                  {{session()->forget('status')}}
+                  
+                  @endif
+                <div id="page-meta">
+                    <div class="inner group">
+                        <h3>...Say Hello! :)</h3>
+                        <h4>Get in touch with Pink Rio team</h4>
+                    </div>
+                </div>
+                @endif
+                <!-- END PAGE META -->
 				<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'no'}}">
 				    <div class="inner group">
