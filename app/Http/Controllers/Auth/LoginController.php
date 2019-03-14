@@ -4,8 +4,9 @@ namespace Corp\Http\Controllers\Auth;
 
 use Corp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Corp\Http\Controllers\SiteController;
 
-class LoginController extends Controller
+class LoginController extends SiteController
 {
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +26,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
+    protected $username = 'login';
+    
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+
+    }
+    public function showLoginForm()
+    {
+        $this->title = 'Вход на сайт';
+        $this->keywords = 'String';
+        $this->meta_desc = 'String';
+
+        return view(env('THEME').'.login',['title'=> $this->title]);
     }
 }
