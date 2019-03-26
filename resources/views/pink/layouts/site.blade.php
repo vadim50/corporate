@@ -80,7 +80,7 @@
 	    
         <!-- FONTs -->
         <link rel="stylesheet" id="google-fonts-css" href="http://fonts.googleapis.com/css?family=Oswald%7CDroid+Sans%7CPlayfair+Display%7COpen+Sans+Condensed%3A300%7CRokkitt%7CShadows+Into+Light%7CAbel%7CDamion%7CMontez&amp;ver=3.4.2" type="text/css" media="all" />
-        <link rel='stylesheet' href='{{ asset(env('THEME')) }}/css/font-awesome.css' type='text/css' media='all' />
+        <link rel='stylesheet' href="{{ asset(env('THEME')) }}/css/font-awesome.css" type='text/css' media='all' />
         
         <!-- JAVASCRIPTs -->
         <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.js"></script>
@@ -120,7 +120,7 @@
                         
                         <!-- START LOGO -->
                         <div id="logo" class="group">
-                            <a href="index.html" title="Pink Rio"><img
+                            <a href="/" title="Pink Rio"><img
                                 src="{{ asset(env('THEME')) }}/images/logo.png" title="Pink Rio" alt="Pink Rio" /></a>
                         </div>
                         <!-- END LOGO -->

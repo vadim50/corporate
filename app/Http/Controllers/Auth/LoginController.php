@@ -26,8 +26,9 @@ class LoginController extends SiteController
      *
      * @var string
      */
+    protected $loginView;
     protected $redirectTo = '/admin';
-    protected $username = 'login';
+    //protected $username = 'login';
     
 
     /**
@@ -38,6 +39,8 @@ class LoginController extends SiteController
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+        $this->loginView = env('THEME').'.login';
 
 
     }
