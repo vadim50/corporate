@@ -72,5 +72,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		]
 
 	])->except(['show']);
+
+	Route::resource('/permissions','Admin\PermissionsController');
+	
 	//Route::resource('/articles', 'Admin\ArticlesController');
 });

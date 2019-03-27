@@ -165,6 +165,20 @@ class ArticlesRepository extends Repository {
 				return ['status' => 'Материал обновлен!'];
 			}
 		}
+
+		public function deleteArticle($alias){
+			$article = Article::where('alias', $alias)->first();
+			if(\Gate::denies('destroy', $article)){
+				dd('hello');
+				abort(403);
+			}
+
+			$article->comments()->delete();
+
+			if($article->delete()){
+				return ['status' => 'Материал удален!'];
+			}
+		}
 	
 	
 }

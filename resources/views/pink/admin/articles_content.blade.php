@@ -36,7 +36,7 @@
 	<td>{{ $article->category->title }}</td>
 	<td>{{ $article->alias }}</td>
 	<td><!-- admin.articles.destroy -->
-		{!! Form::open(['url'=>route('articles.index',['articles'=>$article->alias]),
+		{!! Form::open(['url'=>route('articles.destroy',['articles'=>$article->alias]),
 		'class'=>'horizontal', 'method'=>'POST']) !!}
 		{{ method_field('DELETE') }}
 		{!! Form::button('Удалить', ['class'=>'btn btn-french-5', 'type'=>'submit']) !!}

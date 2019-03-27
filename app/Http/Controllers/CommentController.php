@@ -58,7 +58,9 @@ class CommentController extends SiteController
          $validator->sometimes(['name','email'],'required|max:255',function($input){
              return !Auth::check();
          });
-        if($validator->fails()){return \Response::json(['error'=>$validator->errors()->all()]);}
+        if($validator->fails()){
+            return \Response::json(['error'=>$validator->errors()->all()]);
+        }
 
 
         $user = Auth::user();
