@@ -23,9 +23,9 @@
 			@foreach($roles as $role)
 				<td>
 					@if($role->hasPermission($value->name))
-					<input type="checkbox" name="" value="" checked>
+					<input type="checkbox" name="{{ $role->id }}[]" value="{{ $value->id }}" checked>
 					@else
-					<input type="checkbox" name="" value="">
+					<input type="checkbox" name="{{ $role->id }}[]" value="{{ $value->id }}">
 					@endif
 				</td>
 			@endforeach
